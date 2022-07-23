@@ -148,8 +148,8 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
 
 -- bufferline
 -- 左右Tab切换
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+map("n", "th", ":BufferLineCyclePrev<CR>", opt)
+map("n", "tl", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
 map("n", "tw", ":Bdelete!<CR>", opt)
@@ -162,6 +162,8 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)
 -- 全局搜索
 map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+-- 最近文件
+map("n", "<C-e>", ":Telescope oldfiles<CR>", opt)
 -- Telescope 列表中 插入模式快捷键
 pluginKeys.telescopeList = {
   i = {
