@@ -1,4 +1,16 @@
 # Startup
+## 0. Install neovim
+### Mac
+`brew install neovim`
+### Ubuntu
+```
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
+```
+### windows先安装linux子系统
+1. 安装windows terminal
+2. `wsl --install -d ubuntu-20.04`
 ## 1. Install packer
 ```
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -32,6 +44,7 @@ cd nerd-fonts
     2. Select one Profile
     3. Set custom font to "Hack Nerd Font Mono"
     4. Restart Terminal
+### Windows
 
 ## 4. Set compatible colortheme of Terminal
 *ubuntu no need*
