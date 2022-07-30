@@ -1,6 +1,6 @@
 require('basic')
 require('keybindings')
-require('plugins') 
+require('plugins')
 require('colorscheme')
 require('plugin-config.nvim-tree')
 require('plugin-config.bufferline')
@@ -10,3 +10,4 @@ require('plugin-config.project')
 require('plugin-config.nvim-treesitter')
 require('lsp.setup')
 require('lsp.cmp') -- 代码补全
+require('plugin-config.symbols-outline')
