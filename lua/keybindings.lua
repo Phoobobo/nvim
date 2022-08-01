@@ -244,4 +244,5 @@ pluginKeys.outline = {
   rename_symbol = "r",
   code_actions = "a",
 }
+
 return pluginKeys
