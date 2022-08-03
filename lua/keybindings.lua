@@ -28,6 +28,9 @@ map("n", "g_", "$", opt)
 map("c", "<C-j>", "<C-n>", { noremap = false })
 map("c", "<C-k>", "<C-p>", { noremap = false })
 
+-- 退出
+map("n", "qq", ":q<CR>", opt)
+map("n", "<leader>q", ":quitall<CR>", opt)
 map("n", "<leader>w", ":w<CR>", opt)
 map("n", "<leader>wq", ":wqa!<CR>", opt)
 
@@ -58,10 +61,6 @@ map("v", "K", ":move '<-2<CR>gv-gv", opt)
 -- 在visual mode 里粘贴不要复制
 map("v", "p", '"_dP', opt)
 
--- 退出
-map("n", "qq", ":q!<CR>", opt)
-map("n", "<leader>q", ":qa!<CR>", opt)
-
 -- insert 模式下，跳到行首行尾
 map("i", "<C-h>", "<ESC>I", opt)
 map("i", "<C-l>", "<ESC>A", opt)
@@ -78,10 +77,10 @@ map("n", "wc", "<C-w>c", opt)
 -- 关闭其他
 map("n", "wo", "<C-w>o", opt) -- close others
 -- <leader> + hjkl 窗口之间跳转
-map("n", "<leader>h", "<C-w>h", opt)
-map("n", "<leader>j", "<C-w>j", opt)
-map("n", "<leader>k", "<C-w>k", opt)
-map("n", "<leader>l", "<C-w>l", opt)
+map("n", "wh", "<C-w>h", opt)
+map("n", "wj", "<C-w>j", opt)
+map("n", "wk", "<C-w>k", opt)
+map("n", "wl", "<C-w>l", opt)
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
@@ -113,8 +112,7 @@ map("t", "<leader>l", [[ <C-\><C-N><C-w>l ]], opt)
 local pluginKeys = {}
 
 -- nvim-tree
-map("n", "<A-m>", ":NvimTreeToggle<CR>", opt)
-map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
+map("n", "fe", ":NvimTreeToggle<CR>", opt) --file explore
 -- 列表快捷键
 pluginKeys.nvimTreeList = { -- 打开文件或文件夹
   { key = { "o", "<2-LeftMouse>" }, action = "edit" },
@@ -148,11 +146,12 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
 
 -- bufferline
 -- 左右Tab切换
-map("n", "th", ":BufferLineCyclePrev<CR>", opt)
-map("n", "tl", ":BufferLineCycleNext<CR>", opt)
+map("n", "bh", ":BufferLineCyclePrev<CR>", opt)
+map("n", "bl", ":BufferLineCycleNext<CR>", opt)
+map("n", "bp", ":BufferLineTogglePin<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
-map("n", "tw", ":Bdelete!<CR>", opt)
+map("n", "bw", ":Bdelete!<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
