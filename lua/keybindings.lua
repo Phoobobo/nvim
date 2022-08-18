@@ -148,13 +148,14 @@ pluginKeys.nvimTreeList = { -- 打开文件或文件夹
 -- 左右Tab切换
 map("n", "bh", ":BufferLineCyclePrev<CR>", opt)
 map("n", "bl", ":BufferLineCycleNext<CR>", opt)
-map("n", "bp", ":BufferLineTogglePin<CR>", opt)
+map("n", "btp", ":BufferLineTogglePin<CR>", opt)
+map("n", "bp", ":BufferLinePick<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
 map("n", "bw", ":Bdelete!<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
-map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
+map("n", "bpc", ":BufferLinePickClose<CR>", opt)
 
 -- Telescope
 -- 查找文件
