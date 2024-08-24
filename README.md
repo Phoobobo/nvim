@@ -16,11 +16,16 @@ sudo apt-get install neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-## 2. Install plugins
+## 2. Set nvim config
+Clone this repo under ~/.config/
+## 3. Install plugins
+1. enter nvim
 ```
 nvim
-:PackerSync
 ```
+2. Sync packages by typing
+`:PackerSync`
+
 If some package update failed, just rerun :PackerSync
 
 ## 3. Install NertFonts
