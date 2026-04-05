@@ -16,9 +16,9 @@ return {
           },
           workspace = {
             -- Expose all Neovim runtime Lua files so lua_ls understands
-            -- built-in modules (vim.*, etc.).  The broad "" pattern is
-            -- intentional: it mirrors the recommended lua_ls configuration
-            -- from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
+            -- built-in modules (vim.*, etc.).  The broad "" pattern is the
+            -- standard recommendation from nvim-lspconfig documentation:
+            -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
             library = vim.api.nvim_get_runtime_file("", true),
             checkThirdParty = false,
           },

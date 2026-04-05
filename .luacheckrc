@@ -12,6 +12,7 @@ max_line_length = false
 
 -- Ignore "unused argument" warnings – on_attach callbacks frequently
 -- receive `client` and `bufnr` even when only one is used.
+-- Ignore "unused loop variable" warnings.
 ignore = {
   "212", -- unused argument
   "213", -- unused loop variable

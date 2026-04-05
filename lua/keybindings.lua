@@ -197,4 +197,7 @@ pluginKeys.outline = {
   code_actions = "a",
 }
 
+-- Notifications history (requires nvim-notify + telescope)
+map("n", "<leader>fn", "<cmd>Telescope notify<CR>", { noremap = true, silent = true, desc = "Notification history" })
+
 return pluginKeys
