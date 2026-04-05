@@ -6,13 +6,13 @@ packer.startup(
     -- 颜色主题
     use("folke/tokyonight.nvim")
     -- 文件侧边栏
-    use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
+    use({ "nvim-tree/nvim-tree.lua", requires = "nvim-tree/nvim-web-devicons" })
     -- 顶部tab
-    use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" } })
+    use({ "akinsho/bufferline.nvim", requires = { "nvim-tree/nvim-web-devicons", "moll/vim-bbye" } })
     -- 底部信息栏
     use({
       "nvim-lualine/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
+      requires = { "nvim-tree/nvim-web-devicons" },
     })
     use("arkav/lualine-lsp-progress")
     -- 模糊搜索
@@ -24,7 +24,9 @@ packer.startup(
     -- tree-sitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     --------------------- LSP --------------------
-    use({ "williamboman/nvim-lsp-installer", commit = "36b44679f7cc73968dbb3b09246798a19f7c14e0" })
+    -- LSP 包管理器
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
     -- Lspconfig
     use({ "neovim/nvim-lspconfig" })
     -- 补全引擎
@@ -40,6 +42,8 @@ packer.startup(
 
     -- 常见编程语言代码段
     use("rafamadriz/friendly-snippets")
+    -- null-ls 格式化
+    use("nvimtools/none-ls.nvim")
     -- install without yarn or npm
     use({
       "iamcco/markdown-preview.nvim",
