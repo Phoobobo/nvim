@@ -14,6 +14,7 @@ max_line_length = false
 -- receive `client` and `bufnr` even when only one is used.
 -- Ignore "unused loop variable" warnings.
 ignore = {
+  "122", -- setting read-only field (vim.opt.*, vim.g.*, vim.notify, etc.)
   "212", -- unused argument
   "213", -- unused loop variable
 }

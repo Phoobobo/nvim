@@ -52,7 +52,7 @@ local kind_icons = {
   Event         = "",
   Operator      = "󰆕",
   TypeParameter = "",
-  Copilot       = "",  -- 
+  Copilot       = "",  --
 }
 
 cmp.setup({
