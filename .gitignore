@@ -1,2 +1,13 @@
+# packer (no longer used – kept for migration safety)
 plugin/packer_compiled.lua
+
+# lazy.nvim lock file (commit if you want reproducible installs)
+# lazy-lock.json
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+
+# Private keybindings
 lua/keybindings-private.lua

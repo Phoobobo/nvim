@@ -4,17 +4,14 @@ if not status then
   return
 end
 
--- nvim-tree 支持
-vim.g.nvim_tree_respect_buf_cwd = 1
-
 project.setup({
   detection_methods = { "pattern" },
-  patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", 
+  patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile",
     "settings.gradle", "package.json", ".sln", ".yaml" },
 })
 
-local status, telescope = pcall(require, "telescope")
-if not status then
+local telescope_ok, telescope = pcall(require, "telescope")
+if not telescope_ok then
   vim.notify("没有找到 telescope")
   return
 end
