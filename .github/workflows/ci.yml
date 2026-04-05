@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+# Restrict GITHUB_TOKEN permissions to the minimum required.
+permissions:
+  contents: read
+
+jobs:
+  ##########################################################################
+  # Job 1: Static analysis with luacheck
+  ##########################################################################
+  lint:
+    name: Lua Lint (luacheck)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install luacheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y luarocks
+          sudo luarocks install luacheck
+
+      - name: Run luacheck
+        run: luacheck lua/ --config .luacheckrc
+
+  ##########################################################################
+  # Job 2: Headless Neovim startup test
+  ##########################################################################
+  startup:
+    name: Neovim Headless Startup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install a stable Neovim release
+      - name: Install Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable
+
+      # Place the config where Neovim expects it
+      - name: Copy config to XDG_CONFIG_HOME
+        run: |
+          mkdir -p ~/.config
+          ln -s "$GITHUB_WORKSPACE" ~/.config/nvim
+
+      # Cache the lazy.nvim plugin installation to speed up subsequent runs
+      - name: Cache lazy.nvim plugins
+        id: lazy-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/nvim/lazy
+          key: nvim-lazy-${{ runner.os }}-${{ hashFiles('lua/plugins.lua') }}
+          restore-keys: |
+            nvim-lazy-${{ runner.os }}-
+
+      # Bootstrap lazy.nvim and install all plugins (skipped when cache hits)
+      - name: Install plugins
+        if: steps.lazy-cache.outputs.cache-hit != 'true'
+        run: |
+          nvim --headless "+Lazy! sync" +qa
+        timeout-minutes: 15
+
+      # The real test: start Neovim, load the full config, and quit cleanly.
+      # A non-zero exit code means there was a startup error.
+      - name: Test Neovim startup (no errors)
+        run: |
+          nvim --headless +qa
+        timeout-minutes: 2
+
+      # Verify that the Lua modules load without runtime errors
+      - name: Check Lua modules load cleanly
+        run: |
+          nvim --headless \
+            -c "lua require('basic')" \
+            -c "lua require('keybindings')" \
+            +qa
+        timeout-minutes: 2
