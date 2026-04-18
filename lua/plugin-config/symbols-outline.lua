@@ -5,7 +5,7 @@ if not status then
   return
 end
 
-local keybindings = require('keybindings').outline
+local keybindings = require("config.keymaps").outline
 
 symbol_outline.setup({
     highlight_hovered_item = true,

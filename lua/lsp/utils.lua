@@ -6,22 +6,31 @@ M.capabilities = ok
   and cmp_nvim_lsp.default_capabilities()
   or vim.lsp.protocol.make_client_capabilities()
 
+local format_augroup = vim.api.nvim_create_augroup("phoobobo_lsp_format", { clear = false })
+
 -- Shared on_attach called for every LSP server.
 -- Binds keymaps and enables format-on-save.
 ---@param client table LSP client object
 ---@param bufnr integer  Buffer number
 M.on_attach = function(client, bufnr)
-  local function buf_map(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-  require("keybindings").mapLSP(buf_map)
+  require("config.keymaps").mapLSP(bufnr)
 
-  -- Format on save (only for servers that support it).
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
+  if client:supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({
+      group = format_augroup,
       buffer = bufnr,
+    })
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = format_augroup,
+      buffer = bufnr,
+      desc = "Format with LSP before saving",
       callback = function()
-        vim.lsp.buf.format({ async = false, bufnr = bufnr })
+        vim.lsp.buf.format({
+          bufnr = bufnr,
+          async = false,
+          id = client.id,
+        })
       end,
     })
   end

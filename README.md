@@ -336,7 +336,6 @@ cd nerd-fonts && ./install.sh Hack
 | [bufferline](https://github.com/akinsho/bufferline.nvim) | Buffer tabs |
 | [lualine](https://github.com/nvim-lualine/lualine.nvim) | Status line |
 | [telescope](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder |
-| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax / highlight / indent |
 | [mason](https://github.com/williamboman/mason.nvim) | LSP installer |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP client |
 | [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Completion engine |

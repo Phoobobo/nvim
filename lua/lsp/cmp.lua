@@ -83,7 +83,7 @@ cmp.setup({
   },
 
   sources = build_sources(),
-  mapping = require("keybindings").cmp(cmp),
+  mapping = require("config.keymaps").cmp(cmp),
 
   -- Don't complete inside comments
   enabled = function()

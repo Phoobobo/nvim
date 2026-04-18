@@ -115,18 +115,6 @@ return {
   },
 
   ---------------------------------------------------------------------------
-  -- Treesitter: parsing / syntax highlighting / indent / folding
-  ---------------------------------------------------------------------------
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("plugin-config.nvim-treesitter")
-    end,
-  },
-
-  ---------------------------------------------------------------------------
   -- LSP
   ---------------------------------------------------------------------------
   { "williamboman/mason.nvim",           lazy = false },

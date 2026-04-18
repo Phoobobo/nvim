@@ -20,7 +20,7 @@ telescope.setup({
       preview_cutoff = 120,
     },
     -- Window keymaps
-    mappings = require("keybindings").telescopeList,
+    mappings = require("config.keymaps").telescopeList,
   },
   pickers = {
     find_files = {
